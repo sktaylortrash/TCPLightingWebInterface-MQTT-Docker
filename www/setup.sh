@@ -48,5 +48,5 @@ else
 fi
 
 
-printf "File creation complete"
+printf "File creation complete\n\n"
 

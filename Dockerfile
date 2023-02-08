@@ -16,8 +16,7 @@ run chmod -R 755 "/var/www/html"
 # Add apache config
 ADD config/site-config.conf /etc/apache2/sites-enabled/000-default.conf
 
-# Move the startup scripts over, which:
-#  Set up the config files, the MQTT processes, and start apache in the foreground.
+# Copy Configuration and startup scripts
 ADD config/boot.sh /tmp/boot.sh
 ADD config/generate_sub.sh /tmp/generate_sub.sh
 ADD config/run_sub.sh /tmp/run_sub.sh

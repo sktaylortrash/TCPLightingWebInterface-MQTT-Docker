@@ -1,16 +1,16 @@
 <?php
 /*TCP Lighting Configuration Options*/
 
-define("LIGTHING_BRIDGE_IP", 				"192.168.1.TCP"); 			// IP address of TCP Bridge/Gateway
-define("LIGHTING_BRIDGE_PORT", 				"443");						// 443 for new firmware, 80 for legacy - If you don't know, leave it at 443
-define("LOCAL_URL", 						"http://lighting.local");		// Address of your webserver running this - this is used in runSchedule to call the API
+define("LIGTHING_BRIDGE_IP", 				"TCPBRIDGEIP"); 			// IP address of TCP Bridge/Gateway
+define("LIGHTING_BRIDGE_PORT", 				"TCPBRIDGEPORT");			// 443 for new firmware, 80 for legacy - If you don't know, leave it at 443
+define("LOCAL_URL", 						"LOCALURL");		        // Address of your webserver running this - this is used in runSchedule to call the API
 
-define("USER_EMAIL",    					"you@email.com"); 			// I think this is so you dont have to regenerate tokens if you run this script elsewhere
-define("USER_PASSWORD", 					"can-be-anything");			// can be anything
-define("USE_TOKEN_FILE", 					1); 						// store the token in a file vs hard coding it below otherwise fill in line 51
+define("USER_EMAIL",    					"TOKENEMAIL"); 			    // I think this is so you dont have to regenerate tokens if you run this script elsewhere
+define("USER_PASSWORD", 					"TOKENPASSWORD");			// can be anything
+define("USE_TOKEN_FILE", 					1); 				// store the token in a file vs hard coding it below otherwise fill in line 51
 
-define("FORCE_FADE_ON", 					0);							//makes it so when lights are turned off they fade to 0 (Like Philips Bulbs)
-define("FORCE_FADE_OFF", 					0);							//makes it so when lights are turned on they fade to their assigned value from 0 (Like Philips Bulbs)
+define("FORCE_FADE_ON", 					FADEON);							//makes it so when lights are turned off they fade to 0 (Like Philips Bulbs)
+define("FORCE_FADE_OFF", 					FADEOFF);							//makes it so when lights are turned on they fade to their assigned value from 0 (Like Philips Bulbs)
 
 define("SAVE_SCHEDULE", 					1); 						//saves schedule to a binary file on save schedule.sched
 define("LOG_ACTIONS", 						1); 						//saves completed actions to schedule.actioned
@@ -49,7 +49,7 @@ define("USE_LOCAL_API_IP", 					1); 				/*To do - hook in JS */
 define("LOG_DIR",							dirname(__FILE__) . DIRECTORY_SEPARATOR . "logs");
 
 
-date_default_timezone_set("America/Regina");                 //Ensure this matches your timezone so if you use scheduler the hours match
+date_default_timezone_set("TIMEZONE");                 //Ensure this matches your timezone so if you use scheduler the hours match
 
 /*************************************START OF INSERTED CODE FOR SUNRISE SUNSET MOD *************************/
 /* 
@@ -67,23 +67,23 @@ date_default_timezone_set("America/Regina");                 //Ensure this match
 /* 
  */
 
-define("LATITUDE", 50.445211);
-define("LONGITUDE", -104.618894);
+define("LATITUDE", TCPLATITUDE);
+define("LONGITUDE", TCPLONGITUDE);
 /************************************* END OF INSERTED CODE FOR SUNRISE SUNSET MOD **************************/
 
 /*
 	MQTT Services - Broker connections settings for subscribing and publishing 
 */
 $ENABLE_MQTT = 1;				 	// Enable MQTT State Publishing (1 = true, 0 = false)
-$MQTTserver = "172.16.33.8"; 		// Change as necessary
-$MQTTport = 1883;					// Change as necessary
-$MQTTusername = "admin";			// Set your username
-$MQTTpassword = "password";         // set your password
-$MQTTsub_id = "tcp-subscriber"; 	// Make sure this is unique for connecting to server - you could use uniqid()
-$MQTTpub_id = "tcp-publisher"; 		// Make sure this is unique for connecting to server - you could use uniqid()
-$MQTT_prefix = "light"; 			// Topic prefix for lights - ie light/<room-name>/<light-name>/<UniqueBulbID>
-$MQTT_control = "tcp";				// Control topic identifier for host and script control ie control/<MQTT_control>
-$ENABLE_HA_DISCO = 1;				// Enable MQTT Publishing of Home Assistant Discovery Topics (1 = true, 0 = false)
-$HASSTopic_id = "homeassistant";	// Topic prefix for Home Assistant Discovery Topics - this must match with HASS
-$HASSOnline = "homeassistant/status";		// Topic Home Assistant publishes to, to announce its online
+$MQTTserver = "MQTTIP";			 	// Change as necessary
+$MQTTport = MQTTPORT;				// Change as necessary
+$MQTTusername = "MQTTUSER";			// Set your username
+$MQTTpassword = "MQTTPASS";         // set your password
+$MQTTsub_id = "MQTTSubscriber"; 	// Make sure this is unique for connecting to server - you could use uniqid()
+$MQTTpub_id = "MQTTPublisher"; 		// Make sure this is unique for connecting to server - you could use uniqid()
+$MQTT_prefix = "MQTTPrefix"; 			// Topic prefix for lights - ie light/<room-name>/<light-name>/<UniqueBulbID>
+$MQTT_control = "MQTTControl";				// Control topic identifier for host and script control ie control/<MQTT_control>
+$ENABLE_HA_DISCO = HADiscovery;				// Enable MQTT Publishing of Home Assistant Discovery Topics (1 = true, 0 = false)
+$HASSTopic_id = "HASSTopicID";	// Topic prefix for Home Assistant Discovery Topics - this must match with HASS
+$HASSOnline = "HASSOnlineTopic";		// Topic Home Assistant publishes to, to announce its online
 ?>

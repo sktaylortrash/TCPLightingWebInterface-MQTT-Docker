@@ -2,11 +2,11 @@ version: '3'
 services:
             
   tcplights:
-    image: polargeek/tcp-lighting-web-interface-mqtt:0.1
+    image: polargeek/tcp-lighting-web-interface-mqtt:latest
     ports:
       - "80:80"
     environment:
-      - TCPBRIDGE_IP=172.16.33.112               # IP address of TCP Bridge/Gateway
+      - TCPBRIDGE_IP=172.16.33.69               # IP address of TCP Bridge/Gateway
       - TCPBRIDGE_PORT=443                       # 443 for new firmware, 80 for legacy - If you don't know, leave it at 443
       - LOCAL_URL=http://localhost               # Can be left - this is used in runSchedule to call the API
       - TOKEN_EMAIL=user@email.com               # Only needs to be changed if you are running multiple bridge instances

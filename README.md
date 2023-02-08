@@ -4,7 +4,7 @@ This is a fork of the fabulous TCPLightingWebInterface (https://github.com/bren1
 
 This fork aims to remove cloud dependance by leveraging MQTT. It also removing the complicated setup by encapsulating it in a Docker container
 
-This is acheived through an additional python script (generated as needed by a PHP script), a couple cron jobs and a small API change 
+This is acheived through an additional python script (generated as needed by a PHP script), a couple of scheduled jobs
 
 
 

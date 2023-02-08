@@ -49,7 +49,7 @@ define("USE_LOCAL_API_IP", 					1); 				/*To do - hook in JS */
 define("LOG_DIR",							dirname(__FILE__) . DIRECTORY_SEPARATOR . "logs");
 
 
-date_default_timezone_set("TIMEZONE");                 //Ensure this matches your timezone so if you use scheduler the hours match
+date_default_timezone_set("TCPTIMEZONE");                 //Ensure this matches your timezone so if you use scheduler the hours match
 
 /*************************************START OF INSERTED CODE FOR SUNRISE SUNSET MOD *************************/
 /* 

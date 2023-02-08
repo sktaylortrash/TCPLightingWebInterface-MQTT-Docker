@@ -1,0 +1,296 @@
+html *{
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+html, body{ margin: 0;}
+
+body{
+	background-image:url(grey_wash_wall.png);
+	background-repeat: repeat;
+}
+
+p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#headerBar{
+	width: 100%;
+	clear: both;
+	min-height: 30px;
+	margin-bottom: 20px;
+	background-color: #000;
+	line-height: 30px;
+	text-align: right;
+}
+
+#headerBar a{ margin-right: 30px; color: #fff; }
+
+#toolBar,
+.container,
+.roomContainer{ max-width: 1280px; margin: 0px auto; margin-bottom: 40px; padding: 0px; clear: both; }
+
+#toolBar{
+	background-color: #fff;
+	display: block;
+	padding: 10px 20px;
+	border: 1px solid #000;
+}
+
+a.info{ display: block; height: 30px; line-height: 30px; width: 30px; float: right; text-align: center; border: 1px solid #000; background-color: #fff; top: -1px; right: -1px; position: relative; }
+
+.room-controls{ padding: 10px; }
+
+.room-slider{ margin: 20px 0;}
+
+.roomContainer{ border: 1px solid #000; background-color: #fff; }
+
+.roomContainer, .room-devices, .room-controls{
+	max-width: 1024px;
+	width: 100%;
+	clear: both;
+}
+
+.roomContainer .devices{
+	padding: 20px;
+	padding-bottom: 0px;
+}
+
+.room-devices{
+	width: 100%;
+	position: relative;
+	clear: both;
+	overflow: hidden;
+}
+
+.device{
+	width: 200px;
+	height: 200px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+	float: left;
+	border: 1px solid #000;
+	background-position-x: center;
+	position: relative;
+}
+
+.room-controls{
+	border-top: 1px solid #000;
+}
+
+.light-on{background-color: rgba(255,255,0,1); }
+
+.device{ background-image: url('images/genericbulbicon.png');}
+
+.device.light-fixture{ background-image: url('images/genericmultibulbicon.png'); }
+
+.clear{ clear: both; width: 100%; }
+
+.device.light-fixture.unplugged,
+.unplugged{ 
+	background-image: url(unplugged.png);
+	background-repeat: no-repeat; 
+}
+
+
+
+
+
+#arrayDump::before{
+	content: 'Click to Show Array info';
+}
+#arrayDump{
+	height: 20px;
+	overflow: hidden;
+	width: 100%;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #000;
+	border-radius: 3px;
+	transition: all 1s;
+	font-size: 10px;
+}
+
+#arrayDump.toggled{
+	height: auto;
+	
+}
+
+.room-color{
+	width: 100%;
+	clear: both;
+	display: block;
+	height: 30px;
+	text-align: left;
+	
+	
+}
+
+.room-name{
+	float: left;
+	width: auto;
+	padding: 0px 20px;
+	background-color: #fff;
+	border: 1px solid #000;
+	line-height: 28px;
+	top: -1px;
+	left: -1px;
+	position: relative;
+	color: #000;
+}
+
+.room-color-0{background-color: #000; color: #fff; }
+.room-color-1{background-color: #00bd1f; }
+.room-color-2{background-color: #004fd9; }
+.room-color-3{background-color: #e30000; }
+.room-color-4{background-color: #dde500; }
+.room-color-5{background-color: #845fcf; }
+.room-color-6{background-color: #fa8a00; }
+.room-color-7{background-color: #4bc3de; }
+.room-color-8{background-color: #ff59b7; }
+
+.unplugged p,
+.unplugged .device-slider,
+.unplugged button{ display: none; }
+
+.unplugged p.device-name{ display: block; background-color: rgba(255,255,255,.7); padding: 10px; }
+
+.home-controls,
+.home-devices{
+	padding: 20px;
+}
+
+.scene-container{
+	height: 200px;
+	width: 200px;
+	float: left;
+	margin: 20px;
+	border: 1px solid #000;
+	padding: 20px;
+	position: relative;
+}
+
+.scene-container button{
+	margin-bottom: 3px;
+}
+
+.scene-info{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+@media (max-width: 1024px) {
+	.roomContainer, .room-devices, .room-controls{
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}
+
+@media (max-width: 700px) {
+	#headerBar a{ display: inline-block; width: 50%; margin: 10px 0; float: left; text-align: center; }
+}
+
+
+@media all and (max-width: 600px) {
+	.room-devices{ border: none; }
+	.device{clear: both; width: 100%; margin:0px; margin-bottom: 10px; background-repeat: no-repeat; }
+	.room-slider, .device-slider{ max-width: 80%; }
+}
+
+/* The switch - the box around the slider -- for scheduler & scenes*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*End Switch*/
+
+div.control-button{
+	border: 1px solid #999;
+	border-radius: 4px;
+	background-color: #fff;
+	text-align: center;
+	width: 25px;
+	height: 25px;
+	line-height: 20px;
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	font-size: 12px;
+}
+
+.device.unplugged div.control-button::after,
+.device.plugged div.control-button::after{
+	content: '•';
+	color: #0f0;
+	position: relative;
+	bottom: -7px;
+	left: 2px;
+}
+
+.device.unplugged div.control-button::after{
+	color: #f00;
+}
+

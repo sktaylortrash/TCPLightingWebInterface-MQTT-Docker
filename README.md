@@ -18,6 +18,8 @@ The most important fields are:
 * MQTT_USERNAME
 * MQTT_PASSWORD
 
+Also if you want to expose the service on a port other than the default webserver port of 80. Change "80:80" to something like "1234:80" to make the webserver available at port 1234
+
 
 ```yaml
 version: '3'

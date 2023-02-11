@@ -3,6 +3,7 @@ services:
             
   tcplights:
     image: polargeek/tcp-lighting-web-interface-mqtt:latest
+    restart: always
     ports:
       - "80:80"
     environment:

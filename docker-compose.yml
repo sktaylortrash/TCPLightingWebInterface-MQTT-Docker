@@ -3,9 +3,14 @@ services:
             
   tcplights:
     image: polargeek/tcp-lighting-web-interface-mqtt:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - "80:80"
+    healthcheck:
+      test: "curl -f localhost"
+      interval: 5s
+      timeout: 5s
+      retries: 20
     environment:
       - TCPBRIDGE_IP=172.16.33.69               # IP address of TCP Bridge/Gateway
       - TCPBRIDGE_PORT=443                       # 443 for new firmware, 80 for legacy - If you don't know, leave it at 443

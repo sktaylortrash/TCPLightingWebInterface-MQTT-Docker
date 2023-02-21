@@ -177,12 +177,10 @@ function pageHeader($title){
 		<a href="#">Home</a>
 		<a href="#scenes">Scenes</a>
 	<?php } ?>
-	<a target="_blank" href="https://github.com/sktaylortrash/TCPLightingWebInterface-MQTT">GitHub Link</a>
-    <!-- <a target="_blank" href="https://github.com/bren1818/TCPLightingWebInterface/wiki">Wiki</a>-->
+	<a target="_blank" href="https://github.com/sktaylortrash/TCPLightingWebInterface-MQTT-Docker">GitHub Link</a>
     <a target="_blank" href="MQTTGenerator.php">MQTT Script Generator</a>
     <a target="_blank" href="mqttstate.php">Publish Current Device States</a>
     <a target="_blank" href="mqttdiscovery.php">Publish Home Assistant Discovery Topics</a>
-    <a href="queryBuilder.php">IFTTT Query Builder</a>
 	<?php if( LOG_ACTIONS == 1 || LOG_API_CALLS == 1){
 		echo '<a href="viewLogs.php">View Logs</a>';
 	}
@@ -194,7 +192,7 @@ function pageHeader($title){
 
 function pageFooter(){
 ?>
-	<div id="toolBar"><a href="scheduler.php">Lighting Scheduler</a> | <a href="createDevice.php">Create Virtual Device</a> | <a href="setDateTime.php">Set Bridge Date Time</a> | <a href="discoverBulbs.php">Search for New Bulbs. (Beta)</a> </div>
+	<div id="toolBar"><a href="createDevice.php">Create Virtual Device</a> | <a href="setDateTime.php">Set Bridge Date Time</a> | <a href="discoverBulbs.php">Search for New Bulbs. (Beta)</a> </div>
 </body>
 </html>	
 	<?php

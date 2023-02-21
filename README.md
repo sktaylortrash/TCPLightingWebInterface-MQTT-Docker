@@ -20,6 +20,7 @@ The most important fields are:
 
 Also if you want to expose the service on a port other than the default webserver port of 80. Change "80:80" to something like "1234:80" to make the webserver available at port 1234
 
+### By configuring the volumes variable to point to a local copy of tcp.token. The generated token will survive container recreation and upgrades. Otherwise you will have to press the sync button to regenerate the token everytime.
 
 ```yaml
 version: '3'
@@ -29,6 +30,9 @@ services:
     image: polargeek/tcp-lighting-web-interface-mqtt:latest
     ports:
       - "80:80"
+    # Mounting this single file allows the authorization token to survive container re-creation 
+    volumes:
+      - '/path/to/tcp.token:/var/www/html/tcp.token'
     environment:
       - TCPBRIDGE_IP=172.16.33.69               # IP address of TCP Bridge/Gateway
       - TCPBRIDGE_PORT=443                       # 443 for new firmware, 80 for legacy - If you don't know, leave it at 443

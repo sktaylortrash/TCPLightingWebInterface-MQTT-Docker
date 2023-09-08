@@ -15,8 +15,8 @@ sed -i "s/MQTTIP/$MQTT_IP/" /var/www/html/config.inc.php
 sed -i "s/MQTTPORT/$MQTT_PORT/" /var/www/html/config.inc.php
 sed -i "s/MQTTUSER/$MQTT_USERNAME/" /var/www/html/config.inc.php
 sed -i "s/MQTTPASS/$MQTT_PASSWORD/" /var/www/html/config.inc.php
-sed -i "s|MQTTSubscriber|$MQTT_Subscriber|" /var/www/html/config.inc.php
-sed -i "s|MQTTPublisher|$MQTT_Publisher|" /var/www/html/config.inc.php
+sed -i "s|MQTTSubscriber|$MQTT_subscriber|" /var/www/html/config.inc.php
+sed -i "s|MQTTPublisher|$MQTT_sublisher|" /var/www/html/config.inc.php
 sed -i "s|MQTTPrefix|$MQTT_prefix|" /var/www/html/config.inc.php
 sed -i "s|MQTTControl|$MQTTcontrol|" /var/www/html/config.inc.php
 sed -i "s|HADiscovery|$HA_Discovery|" /var/www/html/config.inc.php

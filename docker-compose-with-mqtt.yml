@@ -1,0 +1,68 @@
+version: "3.7"
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.15
+    container_name: mosquitto
+    healthcheck:
+      test: "mosquitto_sub -t '$$SYS/#' -C 1 -u user -P Password | grep -v Error || exit 1"
+      interval: 10s
+      timeout: 10s
+      retries: 6
+    volumes:
+      - ./mosquitto:/mosquitto
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    ports:
+      - 172.16.33.14:1883:1883
+      - 172.16.33.14:9001:9001
+    restart: always
+
+  tcplights:
+    container_name: TCPLightingWebInterface-MQTT
+    image: polargeek/tcp-lighting-web-interface-mqtt:v1.0.0
+    restart: unless-stopped
+    ports:
+      - "172.16.33.13:80:80"
+    healthcheck:
+      test: "curl --fail http://localhost || exit 1"
+      interval: 60s
+      timeout: 5s
+      retries: 20
+    # Mounting this single file allows the authorization token to survive container re-creation 
+    volumes:
+      - './tcplights/tcp.token:/var/www/html/tcp.token'
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+    environment:
+      - TCPBRIDGE_IP=192.168.1.1                 # IP address of TCP Bridge/Gateway
+      - TCPBRIDGE_PORT=443                       # 443 for new firmware, 80 for legacy - If you don't know, leave it at 443
+      - LOCAL_URL=http://localhost               # Can be left - this is used in runSchedule to call the API
+      - TOKEN_EMAIL=user@email.com               # Only needs to be changed if you are running multiple bridge instances
+      - TOKEN_PASSWORD=letmein                   # Only needs to be changed if you are running multiple bridge instances
+      - FADE_ON=0                                # 0/1 makes it so when lights are turned off they fade to 0 (Like Philips Bulbs)
+      - FADE_OFF=0                               # 0/1 makes it so when lights are turned on they fade to their assigned value from 0 (Like Philips Bulbs)
+      - TCP_TIMEZONE=America/Regina              # Enter your timezone code to use scheduling in the web app
+      - TCP_LATITUDE=50.445211                   # Enter your latitude to use the Sunup/Sundown feature
+      - TCP_LONGITUDE=-104.618894                # Enter your longitude to use the Sunup/Sundown feature
+      - MQTT_IP=192.168.1.2                      # IP of the MQTT Server, you can use 
+      - MQTT_PORT=1883                           # Port of the MQTT Server (1883 is standard)
+      - MQTT_USERNAME=user                       # Username for your MQTT server
+      - MQTT_PASSWORD=Password                   # Password for your MQTT server
+      - MQTT_subscriber=tcp-subscriber           # Only needs to be changed if you are running multiple bridge instances
+      - MQTT_publisher=tcp-publisher             # Only needs to be changed if you are running multiple bridge instances
+      - MQTT_prefix=light                        # Only needs to be changed if you are running multiple bridge instances
+                                                 # Topic prefix for lights - ie light/<room-name>/<light-name>/<UniqueBulbID>
+      - MQTTcontrol=tcp                         # Only needs to be changed if you are running multiple bridge instances
+                                                 # Control topic identifier for host and script control ie control/<MQTT_control>
+      - HA_Discovery=1                           # 0/1 Enable Home Assistant Discovery Topics
+      - HASSTopic_id=homeassistant               # Only change if you have modified Home Assistants default MQTT settings
+                                                 # Topic prefix for Home Assistant Discovery Topics - this must match with HASS
+      - HASSOnline=homeassistant/status          # Only change if you have modified Home Assistants default MQTT settings
+                                                 # Topic Home Assistant publishes to, to announce its online
+      - APACHE_RUN_USER=www-data                 # Dont change unless youve modified defaults
+      - APACHE_RUN_GROUP=www-data                # Dont change unless youve modified defaults
+      - APACHE_LOG_DIR=/var/log/apache2          # Dont change unless youve modified defaults
+      - APACHE_LOCK_DIR=/var/lock/apache2        # Dont change unless youve modified defaults
+      - APACHE_PID_FILE=/var/run/apache2.pid     # Dont change unless youve modified defaults
+ 

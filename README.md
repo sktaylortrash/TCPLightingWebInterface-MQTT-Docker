@@ -36,8 +36,8 @@ While the second includes an MQTT broker with the lighting interface dependant o
     - MQTT_PASSWORD
 6. If using the version with the MQTT Broker you will need to setup Mosquitto first. This guide [From Home Automation Guy](https://www.homeautomationguy.io/blog/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant) should contain the information you need
 7. Put your bridge in pairing mode
-8. start the container with  *docker-compose up -d*
+8. Start the container with  *docker-compose up -d*
 
-If you want to expose the service on a port other than the default webserver port of 80. Change "80:80" to something like "1234:80" to make the webserver available at port 1234
+If you want to expose the service on a port other than the default webserver port of 80. Change "80:80" in docker-compose.yml to something like "1234:80" to make the webserver available at port 1234
 
 

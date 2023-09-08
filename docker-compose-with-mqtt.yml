@@ -19,7 +19,7 @@ services:
 
   tcplights:
     container_name: TCPLightingWebInterface-MQTT
-    image: polargeek/tcp-lighting-web-interface-mqtt:v1.0.0
+    image: polargeek/tcp-lighting-web-interface-mqtt:latest
     restart: unless-stopped
     ports:
       - "172.16.33.13:80:80"

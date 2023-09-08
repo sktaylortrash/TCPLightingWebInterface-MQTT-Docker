@@ -1,15 +1,15 @@
 ![HeaderWebInterface](https://user-images.githubusercontent.com/23568795/64644718-85070980-d3d0-11e9-83a8-034f91ee0f4f.png)
 ## TCPLightingWebInterface-MQTT
-This docker project leverages (https://github.com/sktaylortrash/TCPLightingWebInterface-MQTT). Which is an MQTT focused fork of the fabulous TCPLightingWebInterface (https://github.com/bren1818/TCPLightingWebInterface) created by bren1818.
+This docker project leverages [https://github.com/sktaylortrash/TCPLightingWebInterface-MQTT](https://github.com/sktaylortrash/TCPLightingWebInterface-MQTT). Which is an MQTT focused fork of the fabulous TCPLightingWebInterface [https://github.com/bren1818/TCPLightingWebInterface](https://github.com/bren1818/TCPLightingWebInterface) created by bren1818.
 
 It removes the complicated setup of the larger project by encapsulating it in a Docker container
 
-This fork removes cloud dependance by leveraging MQTT and is geared towards compatibility with Home Assistant (https://www.home-assistant.io/)  
+This fork removes cloud dependance by leveraging MQTT and is geared towards compatibility with Home Assistant [https://www.home-assistant.io/](https://www.home-assistant.io/)  
 
 #### While components like the scheduler and IFTTT endpoints are technically still available in this project. They are not configured in this version and would require additional changes to the container.
 
 ### A ready to go image is hosted on Docker Hub: 
-(https://hub.docker.com/repository/docker/polargeek/tcp-lighting-web-interface-mqtt/general)
+[https://hub.docker.com/repository/docker/polargeek/tcp-lighting-web-interface-mqtt](https://hub.docker.com/repository/docker/polargeek/tcp-lighting-web-interface-mqtt/general)
 
 Cloning the code in this repo would only be necessary if you wanted to build your own version of the image. 
 
@@ -34,9 +34,9 @@ While the second includes an MQTT broker with the lighting interface dependant o
     - MQTT_PORT=1883
     - MQTT_USERNAME
     - MQTT_PASSWORD
-  1. If using the version with the MQTT Broker you will need to setup Mosquitto first this guide (https://www.homeautomationguy.io/blog/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant) should contain the information you need
-6. Put your bridge in pairing mode
-7. start the container with  *docker-compose up -d*
+6. If using the version with the MQTT Broker you will need to setup Mosquitto first. This guide [From Home Automation Guy](https://www.homeautomationguy.io/blog/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant) should contain the information you need
+7. Put your bridge in pairing mode
+8. start the container with  *docker-compose up -d*
 
 If you want to expose the service on a port other than the default webserver port of 80. Change "80:80" to something like "1234:80" to make the webserver available at port 1234
 

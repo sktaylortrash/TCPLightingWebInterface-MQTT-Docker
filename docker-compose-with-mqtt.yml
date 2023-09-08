@@ -30,7 +30,7 @@ services:
       retries: 20
     # Mounting this single file allows the authorization token to survive container re-creation 
     volumes:
-      - './tcplights/tcp.token:/var/www/html/tcp.token'
+      - './tcplights/tcp.token:/var/www/html/tcp.token' # Change as needed to point to your local volume store
     depends_on:
       mosquitto:
         condition: service_healthy

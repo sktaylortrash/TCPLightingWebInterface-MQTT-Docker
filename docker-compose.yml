@@ -13,7 +13,7 @@ services:
       retries: 20
     # Mounting this single file allows the authorization token to survive container re-creation 
     volumes:
-      - './tcplights/tcp.token:/var/www/html/tcp.token'
+      - './tcplights/tcp.token:/var/www/html/tcp.token' # Change as needed to point to your local volume store
     environment:
       - TCPBRIDGE_IP=192.168.1.1                 # IP address of TCP Bridge/Gateway
       - TCPBRIDGE_PORT=443                       # 443 for new firmware, 80 for legacy - If you don't know, leave it at 443

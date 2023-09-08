@@ -8,6 +8,8 @@ This fork removes cloud dependance by leveraging MQTT and is geared towards comp
 
 #### While components like the scheduler and IFTTT endpoints are technically still available in this project. They are not configured in this version and would require additional changes to the container.
 
+## A ready to go image is hosted on Docker Hub (https://hub.docker.com/repository/docker/polargeek/tcp-lighting-web-interface-mqtt/general)
+Cloning the code in this repo would only be necessary if you wanted to build your own version of the image. 
 
 The docker-compose.yaml as shown below must be edited to match your environment. It assumes you already have a working MQTT broker in your environment.
 The most important fields are:
@@ -32,7 +34,7 @@ services:
       - "80:80"
     # Mounting this single file allows the authorization token to survive container re-creation 
     volumes:
-      - '/path/to/tcp.token:/var/www/html/tcp.token'
+      - '/tcplights/tcp.token:/var/www/html/tcp.token' # Change as needed to point to your local volume store
     environment:
       - TCPBRIDGE_IP=172.16.33.69               # IP address of TCP Bridge/Gateway
       - TCPBRIDGE_PORT=443                       # 443 for new firmware, 80 for legacy - If you don't know, leave it at 443

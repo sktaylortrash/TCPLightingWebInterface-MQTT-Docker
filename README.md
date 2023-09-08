@@ -8,7 +8,8 @@ This fork removes cloud dependance by leveraging MQTT and is geared towards comp
 
 #### While components like the scheduler and IFTTT endpoints are technically still available in this project. They are not configured in this version and would require additional changes to the container.
 
-## A ready to go image is hosted on Docker Hub (https://hub.docker.com/repository/docker/polargeek/tcp-lighting-web-interface-mqtt/general)
+### A ready to go image is hosted on Docker Hub: 
+(https://hub.docker.com/repository/docker/polargeek/tcp-lighting-web-interface-mqtt/general)
 
 Cloning the code in this repo would only be necessary if you wanted to build your own version of the image. 
 

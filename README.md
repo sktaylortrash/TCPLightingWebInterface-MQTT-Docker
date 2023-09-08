@@ -14,7 +14,7 @@ This fork removes cloud dependance by leveraging MQTT and is geared towards comp
 Cloning the code in this repo would only be necessary if you wanted to build your own version of the image. 
 
 
-##Quick Start Guide
+## Quick Start Guide
 
 Two docker-compose files are made available:
 * [docker-compose.yml](https://raw.githubusercontent.com/sktaylortrash/TCPLightingWebInterface-MQTT-Docker/main/docker-compose.yml)
@@ -28,12 +28,12 @@ While the second includes an MQTT broker with the lighting interface dependant o
 3. For the interface only create a sub-directory called **tcplights** and if using the broker version also create **mosquitto** in the directory where your docker-compose.yml resides
 4. create a blank file in **tcplights** called ***tcp.token***  (if you don't create a permanent token file the bridge will have to be re-paired on every restart of the container)
 5. Edit at minimum the variables described below
-- TCPBRIDGE_IP
-- TCPBRIDGE_PORT
-- MQTT_IP
-- MQTT_PORT=1883
-- MQTT_USERNAME
-- MQTT_PASSWORD
+    - TCPBRIDGE_IP
+    - TCPBRIDGE_PORT
+    - MQTT_IP
+    - MQTT_PORT=1883
+    - MQTT_USERNAME
+    - MQTT_PASSWORD
   1. If using the version with the MQTT Broker you will need to setup Mosquitto first this guide (https://www.homeautomationguy.io/blog/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant) should contain the information you need
 6. Put your bridge in pairing mode
 7. start the container with  *docker-compose up -d*

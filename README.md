@@ -41,3 +41,25 @@ While the second includes an MQTT broker with the lighting interface dependant o
 If you want to expose the service on a port other than the default webserver port of 80. Change "80:80" in docker-compose.yml to something like "1234:80" to make the webserver available at port 1234
 
 
+## Room Light Groups
+If you have multiple lights in a single room and group them in Home Assistant. You will find that they turn on in sequence rather than all at once. This is know as the "Popcorn Effect". While rooms are not exposed to Home Assistant Autodiscovery, they do exist and are fully useable as a single light. If you wish to use them you must define them manually in configuration.yaml like the example shown below.
+
+```yaml
+mqtt:
+  light:
+    - unique_id: "LivingRoom"
+      name: "LivingRoom"
+      state_topic: "light/LivingRoom/1/status"
+      command_topic: "light/LivingRoom/1/switch"
+      brightness_command_topic: "light/LivingRoom/1/brightness/set"
+      brightness_state_topic: "light/LivingRoom/1/brightness"
+      brightness_scale: 100
+      payload_on: "1"
+      payload_off: "0"
+      optimistic: false
+      device:
+        identifiers: ["room1"]
+        name: "Living Room"
+        manufacturer: "TCP"
+        model: "TCP Room"
+```
